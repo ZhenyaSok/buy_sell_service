@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
+    "drf_yasg",
+
     "users",
     "ads",
     "redoc",
@@ -92,6 +95,13 @@ DJOSER = {
 
 # TODO здесь необходимо настроить подключение к БД
 DATABASES = {
+    'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'buy_sell_service',
+            'USER': 'postgres',
+            'PASSWORD': '123456',
+            # 'HOST': '5432',
+        }
 }
 
 
