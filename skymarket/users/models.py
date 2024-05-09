@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.db import models
-from users.managers import UserManager
+from .managers import UserManager
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 NULLABLE = {"null": True, "blank": True}
@@ -22,7 +22,7 @@ class User(AbstractBaseUser):
     )
 
     username = None
-    email = models.EmailField(unique=True, verbose_name='Email')
+    email = models.EmailField(unique=True, verbose_name='Email', **NULLABLE)
     first_name = models.CharField(max_length=50, verbose_name='Имя', **NULLABLE)
     last_name = models.CharField(max_length=75, verbose_name='Фамилия', **NULLABLE)
     phone = models.CharField(max_length=35, verbose_name='номер телефона', **NULLABLE)
@@ -57,8 +57,7 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_admin
 
-    # также для работы модели пользователя должен быть переопределен
-    # менеджер объектов
+
 
 
 
