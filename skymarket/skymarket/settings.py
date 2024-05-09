@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-# TODO здесь тоже нужно подключить Swagger и corsheaders
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "drf_yasg",
+    "corsheaders",
 
     "users",
     "ads",
@@ -152,6 +152,16 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Настройки CORS
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
+CORS_ALLOW_ALL_ORIGINS = False
 
 
 # Include Email Backend
