@@ -9,9 +9,8 @@ app_name = SalesConfig.name
 
 router = DefaultRouter()
 router.register(r'ads', AdViewSet, basename='ads')
-router.register(r'ads/(?P<ad_pk>\d+)/comments', CommentViewSet, basename='reviews')
+router.register(r'ads/(?P<ad_pk>\d+)/comments', CommentViewSet, basename='comment')
 
-urlpatterns = []
 urlpatterns = [
     path("", include(router.urls))
 ]
