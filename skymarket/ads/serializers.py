@@ -4,16 +4,12 @@ from ads.models import Ad, Comment
 class CommentSerializer(serializers.ModelSerializer):
     author_first_name = serializers.CharField(source="author.first_name", read_only=True)
     author_last_name = serializers.CharField(source="author.last_name", read_only=True)
-    author_avatar = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Comment
         fields = '__all__'
 
-    def get_author_avatar(self, obj):
-        request = self.context.get("request")
-        if obj.author.avatar:
-            return request.build_absolute_uri(obj.author.avatar.url)
 
 
 class AdSerializer(serializers.ModelSerializer):
