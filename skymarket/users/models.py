@@ -23,7 +23,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone', 'role']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     @property
     def is_superuser(self):
