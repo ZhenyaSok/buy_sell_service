@@ -8,6 +8,7 @@ class Command(BaseCommand):
             email='zhenyapaiton@yandex.ru',
             first_name='admin_main',
             last_name='custom',
+            role='admin',
             is_active=True,
         )
         user.set_password('123456')
