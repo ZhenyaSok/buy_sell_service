@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from ads.apps import SalesConfig
-from ads.views import AdViewSet, CommentViewSet
+from .apps import SalesConfig
+from .views import AdViewSet, CommentViewSet
 
 # TODO настройка роутов для модели
 

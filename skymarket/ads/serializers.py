@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ads.models import Ad, Comment
+from .models import Ad, Comment
 
 class CommentSerializer(serializers.ModelSerializer):
     author_first_name = serializers.CharField(source="author.first_name", read_only=True)

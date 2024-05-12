@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 from .managers import UserManager
-from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 NULLABLE = {"null": True, "blank": True}
 
@@ -14,6 +13,7 @@ class UserRoles(models.TextChoices):
 class User(AbstractBaseUser):
     """Модель пользователя"""
 
+    username = None
     email = models.EmailField(unique=True, verbose_name='Email', **NULLABLE)
     first_name = models.CharField(max_length=50, verbose_name='Имя', **NULLABLE)
     last_name = models.CharField(max_length=75, verbose_name='Фамилия', **NULLABLE)

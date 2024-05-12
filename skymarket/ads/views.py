@@ -3,9 +3,9 @@ from rest_framework import pagination, viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from ads.models import Ad, Comment
-from ads.permissions import IsAdminOrOwner
-from ads.serializers import AdDetailSerializer, AdSerializer, CommentSerializer
+from .models import Ad, Comment
+from .permissions import IsAdminOrOwner
+from .serializers import AdDetailSerializer, AdSerializer, CommentSerializer
 
 
 class AdPagination(pagination.PageNumberPagination):
