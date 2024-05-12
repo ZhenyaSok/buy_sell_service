@@ -9,9 +9,9 @@ class Command(BaseCommand):
     fixtures_dir = "fixtures"
     loaddata_command = "loaddata"
     filenames = [
-
-        "ad"
-
+        "users",
+        "ad",
+        "comments"
     ]
 
     def handle(self, *args, **options):
