@@ -12,7 +12,7 @@ class Ad(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="ads", on_delete=models.CASCADE,
                                verbose_name="автор", **NULLABLE)
     created_at = models.DateTimeField(default=timezone.now, verbose_name="время создания")
-    # image = models.ImageField(upload_to="ads/", verbose_name="Изображение", **NULLABLE)
+    image = models.ImageField(upload_to="ads/", verbose_name="Изображение", **NULLABLE)
 
     class Meta:
         ordering = ["-created_at"]
