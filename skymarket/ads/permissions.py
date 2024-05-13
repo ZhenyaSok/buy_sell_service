@@ -1,5 +1,5 @@
 from rest_framework.permissions import BasePermission
-from users.models import UserRoles
+from users import models
 
 class IsAdminOrOwner(BasePermission):
     message = "Вы не являетесь владельцем или администратором"
@@ -10,6 +10,6 @@ class IsAdminOrOwner(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         """Проверка на владельца или админа"""
-        if request.user.role == UserRoles.ADMIN:
+        if request.user.role == models.UserRoles.ADMIN:
             return True
         return obj.author == request.user

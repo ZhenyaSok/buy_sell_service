@@ -1,7 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import pagination, viewsets
+from rest_framework import pagination, viewsets, generics
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .filters import AdFilter
 from .models import Ad, Comment
@@ -31,11 +31,13 @@ class AdViewSet(viewsets.ModelViewSet):
         и удалять только владелец или админ"""
         permission_classes = []
         if self.action == 'list':
-            permission_classes = []
+            permission_classes = [AllowAny]
         if self.action in ['create', 'retrieve']:
-            permission_classes = [IsAuthenticated]
+            # permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
         elif self.action in ['update', 'partial_update', 'destroy']:
-            permission_classes = [IsAdminOrOwner]
+            # permission_classes = [IsAdminOrOwner]
+            permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
@@ -61,15 +63,28 @@ class CommentViewSet(viewsets.ModelViewSet):
         и удалять только владелец или админ"""
         permission_classes = []
         if self.action in ['create', 'list', 'retrieve']:
-            permission_classes = [IsAuthenticated]
+            # permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
         elif self.action in ['update', 'partial_update', 'destroy']:
-            permission_classes = [IsAdminOrOwner]
+            # permission_classes = [IsAdminOrOwner]
+            permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
         """Автоматическое сохранение владельца отзыва в определенном объявлении"""
         new_review = serializer.save()
         new_review.author = self.request.user
-        new_review.ad = Ad.objects.get(pk=self.kwargs['ad_pk'])
+        new_review.ad = Ad.objects.get(pk=self.kwargs["ad_pk"])
         new_review.save()
+
+
+class MyListAPIView(generics.ListAPIView):
+    """Возвращает список объявлений текущего пользователя"""
+
+    serializer_class = AdSerializer
+    permission_classes = [AllowAny]
+    pagination_class = AdPagination
+
+    def get_queryset(self):
+        return Ad.objects.filter(author=self.request.user)
 
