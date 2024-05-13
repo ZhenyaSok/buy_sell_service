@@ -225,7 +225,7 @@ SWAGGER_SETTINGS = {
 
 AUTH_USER_MODEL = 'users.User'
 
-# Include Email Backend
+# Include Email Backend (gmail.com)
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
