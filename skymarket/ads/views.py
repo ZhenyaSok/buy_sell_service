@@ -33,11 +33,11 @@ class AdViewSet(viewsets.ModelViewSet):
         if self.action == 'list':
             permission_classes = [AllowAny]
         if self.action in ['create', 'retrieve']:
-            # permission_classes = [IsAuthenticated]
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
+            # permission_classes = [AllowAny]
         elif self.action in ['update', 'partial_update', 'destroy']:
-            # permission_classes = [IsAdminOrOwner]
-            permission_classes = [AllowAny]
+            permission_classes = [IsAdminOrOwner]
+            # permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
@@ -63,11 +63,11 @@ class CommentViewSet(viewsets.ModelViewSet):
         и удалять только владелец или админ"""
         permission_classes = []
         if self.action in ['create', 'list', 'retrieve']:
-            # permission_classes = [IsAuthenticated]
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
+            # permission_classes = [AllowAny]
         elif self.action in ['update', 'partial_update', 'destroy']:
-            # permission_classes = [IsAdminOrOwner]
-            permission_classes = [AllowAny]
+            permission_classes = [IsAdminOrOwner]
+            # permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
 
     def perform_create(self, serializer):
@@ -82,7 +82,7 @@ class MyListAPIView(generics.ListAPIView):
     """Возвращает список объявлений текущего пользователя"""
 
     serializer_class = AdSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     pagination_class = AdPagination
 
     def get_queryset(self):
