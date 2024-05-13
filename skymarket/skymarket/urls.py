@@ -23,11 +23,14 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path("api/admin/", admin.site.urls),
+    path("admin/", admin.site.urls),
     path("api/redoc-tasks/", include("redoc.urls")),
 
     path("api/", include("users.urls")),
     path("api/", include("ads.urls", namespace="ads")),
+
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
