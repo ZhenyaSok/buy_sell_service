@@ -225,35 +225,14 @@ AUTH_USER_MODEL = 'users.User'
 
 # Include Email Backend
 
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
-# EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-# EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-# EMAIL_PORT = os.getenv("EMAIL_PORT")
-
-# Настройки почты, для отправки
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'zhenyapaiton@yandex.ru'
-EMAIL_HOST_PASSWORD = 'yplghjyryjhqiwnd'
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'zhenyapaiton@yandex.ru'
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
 
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'kapitan.kub@gmail.com'
-# EMAIL_HOST_PASSWORD = 'imic ketc pmfg qwvf'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# DEFAULT_FROM_EMAIL = 'kapitan.kub@gmail.com'
 
-# EMAIL_HOST = 'smtp.mail.ru'
-# EMAIL_PORT = 2525
-# EMAIL_HOST_USER = "kapitan_kub@mail.ru"
-# EMAIL_HOST_PASSWORD = "123Kubik123!"
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
+
+
