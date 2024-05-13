@@ -1,7 +1,7 @@
 [
   {
     "model": "ads.ad",
-    "pk": 15,
+    "pk": 1,
     "fields": {
       "image": null,
       "title": "Компьютер недорого",
