@@ -12,7 +12,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'username', 'phone', 'last_name', 'email', 'password']
+        fields = ['id', 'first_name', 'username', 'phone', 'last_name', 'is_active', 'email', 'password']
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):

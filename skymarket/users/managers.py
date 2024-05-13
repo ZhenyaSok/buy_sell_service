@@ -15,7 +15,8 @@ class UserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             phone=phone,
-            role="user"
+            role="user",
+            is_active=True
         )
         user.is_active = True
         user.set_password(password)
@@ -36,6 +37,7 @@ class UserManager(BaseUserManager):
             phone=phone,
             password=password,
             role="admin"
+
         )
 
         user.save(using=self._db)

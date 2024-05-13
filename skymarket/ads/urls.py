@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 from .apps import SalesConfig
-from .views import AdViewSet, CommentViewSet
+from .views import AdViewSet, CommentViewSet, MyListAPIView
 
 
 
@@ -15,5 +15,6 @@ router.register(r'ads/(?P<ad_pk>\d+)/comments', CommentViewSet, basename='commen
 
 
 urlpatterns = [
-    path("", include(router.urls))
+    path("", include(router.urls)),
+    path('me/', MyListAPIView.as_view(), name='user_ad')
 ]
