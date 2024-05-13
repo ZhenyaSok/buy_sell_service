@@ -125,13 +125,23 @@ DJOSER = {
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'buy_sell_service',
+            'NAME': 'postgres',
             'USER': 'postgres',
-            'PASSWORD': '123456',
-            # 'HOST': '5432',
+            'PASSWORD': 'postgres',
+            'HOST': 'db',
+            'PORT': '5432'
         }
 }
-
+# DATABASES = {
+#     'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'buy_sell_service',
+#             'USER': 'postgres',
+#             'PASSWORD': '123456',
+            # 'HOST': 'db',
+            # 'PORT': '5432'
+#         }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
