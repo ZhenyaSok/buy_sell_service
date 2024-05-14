@@ -18,14 +18,21 @@ class AdViewSetsTestCase(APITestCase):
         self.client.force_authenticate(user=self.user)  # Аутентификация пользователя
         # self.serializer_ad = AdSerializer([self.ad], many=True).data
 
-    # def test_get_queryset_authenticated_user(self):
-    #
-    #     self.client.logout()
-    #     url = reverse('ads:ads-list')
-    #     response = self.client.get(url)
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
-    #     serializer_data = AdSerializer([self.ad], many=True).data
-    #     self.assertEqual(response.data, serializer_data)
+    def test_get_queryset_authenticated_user(self):
+
+        self.client.logout()
+        url = reverse('ads:ads-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        serializer_data = AdSerializer([self.ad], many=True).data
+        self.assertEqual(response.data, serializer_data)
+
+    def test_get_queryset_unauthenticated_user(self):
+        self.client.logout()
+        url = reverse('ads:ads-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
 
     def test_ad_list(self):
         """Тест на получение листа приятных привычек"""
