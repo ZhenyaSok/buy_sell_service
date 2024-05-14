@@ -18,6 +18,7 @@ class Ad(models.Model):
         ordering = ["-created_at"]
         verbose_name = "объявление"
         verbose_name_plural = "объявления"
+        app_label = 'ads'
 
     def __str__(self):
         return f'{self.title} - {self.price}'
