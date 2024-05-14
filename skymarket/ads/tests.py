@@ -62,6 +62,13 @@ class AdViewSetsTestCase(APITestCase):
         val = Ad.objects.get(pk=self.ad.pk)
         self.assertEqual(val, 'update second ad')
 
+    def test_delete_ad(self):
+        url = reverse('ads-detail', args=[self.ad.pk])
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Ad.objects.filter(pk=self.ad.pk).exists())
+
+
 
 
 
