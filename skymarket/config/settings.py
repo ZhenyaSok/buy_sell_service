@@ -113,11 +113,16 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
     'SET_PASSWORD_RETYPE': True,
     'USER_CREATE_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,
     'ACTIVATION_URL': 'auth/verify/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
+    'LOGIN_FIELD': 'email',
+    'EMAIL': {
+         'password_reset': 'users.email.PasswordResetEmail',
+    },
 }
 
 # Database
@@ -234,7 +239,6 @@ EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.getenv("EMAIL_PORT")
-
 
 
 
