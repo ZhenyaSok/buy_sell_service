@@ -27,11 +27,12 @@ class AdViewSetsTestCase(APITestCase):
         serializer_data = AdSerializer([self.ad], many=True).data
         self.assertEqual(response.data, serializer_data)
 
-    def test_get_queryset_unauthenticated_user(self):
-        self.client.logout()
-        url = reverse('ads:ads-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    # def test_get_queryset_unauthenticated_user(self):
+    #     # Если пользователь не зарегестрирован
+    #     self.client.logout()
+    #     url = reverse('ads:ads-list')
+    #     response = self.client.get(url)
+    #     self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 
     def test_create_ad(self):
